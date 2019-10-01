@@ -1,4 +1,5 @@
 @startuml 刷脸门禁系统
+scale 2
 
 actor 用户 as user
 actor 未注册用户 as uruser
