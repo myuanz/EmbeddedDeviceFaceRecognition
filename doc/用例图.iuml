@@ -1,0 +1,25 @@
+@startuml 刷脸门禁系统
+
+actor 用户 as user
+actor 未注册用户 as uruser
+actor 注册用户 as ruser
+
+actor 管理员 as adm
+
+adm -|> ruser
+ruser -|> user
+uruser -down-|> user
+
+
+(获取当前可拍摄人脸特征) as (get_feature)
+adm -down-> (get_feature)
+(get_feature) <.down. (创建账号) : extend
+adm -up-> (向识别设备发送命令)
+
+(为特征指定关联账号) as (vidkgrlm)
+(get_feature) <. (vidkgrlm) : extend
+(vidkgrlm) .> (将特征储存于嵌入式设备) : include
+user -> (刷脸)
+(刷脸) <. (控制器开门) : extend
+
+@enduml
