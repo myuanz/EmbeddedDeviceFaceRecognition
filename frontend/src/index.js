@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import {subscribeToTimer} from './api/subscribeToTimer';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        subscribeToTimer((err, timestamp) => this.setState({
+            timestamp: timestamp
+        }));
+    }
+
+    state = {timestamp: 'no timestamp yet'}
+
+    render() {
+        return (
+            <h1>This is the timer value: {this.state.timestamp}</h1>
+        );
+    }
+}
+
+ReactDOM.render(<App/>, document.getElementById('root'));

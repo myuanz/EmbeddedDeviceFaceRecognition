@@ -1,0 +1,12 @@
+@startuml 时序图
+actor 用户 as user
+participant 人脸识别设备 as qru
+participant 识别系统服务端 as res
+participant 门锁控制器 as dc
+
+user -> qru : 接近识别设备
+qru -> res : 通知识别结果
+res --> dc : [人脸在库验证成功] 通知开门
+res --> res : [人脸不在库验证失败] 记录人脸特征
+
+@enduml
