@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-db = SQLAlchemy()
 
+db = SQLAlchemy()
 
 
 class Account(db.Model):
@@ -41,6 +41,7 @@ class AssociationRecord(db.Model):
         self.create_time = datetime.now()
         super().__init__(**kwargs)
 
+
 class RecognitionRecord(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
     create_time = db.Column(db.DateTime)
@@ -49,6 +50,7 @@ class RecognitionRecord(db.Model):
         backref=db.backref('recognition_record', lazy='dynamic'),
     )
     face_feature_UID = db.Column(db.String(32), db.ForeignKey('face_feature.UID'))
+
     def __init__(self, **kwargs):
         self.create_time = datetime.now()
         super().__init__(**kwargs)
