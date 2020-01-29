@@ -180,7 +180,6 @@ class App extends React.Component {
                     () => {
                         console.log(this.state.to_add_user);
                         emit('create_association', this.state.association_uid, this.state.to_add_user.ID);
-
                     }
                 }>创建关联
                 </button>

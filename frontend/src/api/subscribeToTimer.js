@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-const socket = io.connect('http://192.168.1.156:8000/test');
+const socket = io.connect('http://127.0.0.1:8000/test');
 socket.on('connect', function () {
     socket.emit('my event', {data: 'I\'m connected!'});
 });

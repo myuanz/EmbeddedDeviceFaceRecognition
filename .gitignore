@@ -3,3 +3,5 @@ build
 config.py
 .idea
 *.pyc
+.vscode
+__pycache__
